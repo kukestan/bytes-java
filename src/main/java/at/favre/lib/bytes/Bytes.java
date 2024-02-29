@@ -138,7 +138,7 @@ public class Bytes implements Comparable<Bytes>, Serializable, Iterable<Byte> {
      * @return new instance
      */
     public static Bytes wrap(byte[] array) {
-        return wrap(array, ByteOrder.BIG_ENDIAN);
+        return wrap(array, ByteOrder.LITTLE_ENDIAN);
     }
 
     /**
@@ -1433,7 +1433,7 @@ public class Bytes implements Comparable<Bytes>, Serializable, Iterable<Byte> {
      */
     public char charAt(int index) {
         Util.Validation.checkIndexBounds(length(), index, 2, "char");
-        return internalBuffer().position(index).getChar();
+        return ((ByteBuffer) internalBuffer().position(index)).getChar();
     }
 
     /**
@@ -1446,7 +1446,7 @@ public class Bytes implements Comparable<Bytes>, Serializable, Iterable<Byte> {
      */
     public short shortAt(int index) {
         Util.Validation.checkIndexBounds(length(), index, 2, "short");
-        return internalBuffer().position(index).getShort();
+        return ((ByteBuffer) internalBuffer().position(index)).getShort();
     }
 
     /**
@@ -1459,7 +1459,7 @@ public class Bytes implements Comparable<Bytes>, Serializable, Iterable<Byte> {
      */
     public int intAt(int index) {
         Util.Validation.checkIndexBounds(length(), index, 4, "int");
-        return internalBuffer().position(index).getInt();
+        return ((ByteBuffer) internalBuffer().position(index)).getInt();
     }
 
     /**
@@ -1472,7 +1472,7 @@ public class Bytes implements Comparable<Bytes>, Serializable, Iterable<Byte> {
      */
     public long longAt(int index) {
         Util.Validation.checkIndexBounds(length(), index, 8, "long");
-        return internalBuffer().position(index).getLong();
+        return ((ByteBuffer) internalBuffer().position(index)).getLong();
     }
 
     /**
